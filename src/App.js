@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { motion } from 'framer-motion';
 
 const images = [
@@ -10,35 +11,33 @@ const images = [
 ];
 
 const AgeCounterApp = () => {
-  const [age, setAge] = useState(25);
+  const [age, setAge] = useState(12);
   const [imageIndex, setImageIndex] = useState(0);
 
   const changeAge = (delta) => {
     const newAge = age + delta;
-    if (newAge >= 0) {
+    if (newAge >= 12 & newAge <= 29) {
       setAge(newAge);
       setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }
   };
 
   return (
-    <div className="flex flex-col items-center p-4 space-y-4">
-      <div className="w-80 shadow-xl rounded-2xl p-4 bg-white">
-        <div className="flex flex-col items-center">
-          <motion.img
-            src={images[imageIndex]}
-            alt="Profile"
-            className="rounded-full w-40 h-40 object-cover shadow-lg mb-4"
-            key={imageIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          />
-          <h1 className="text-xl font-semibold mb-2">Age: {age}</h1>
-          <div className="flex space-x-4">
-            <button onClick={() => changeAge(1)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+1 Year</button>
-            <button onClick={() => changeAge(-1)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">-1 Year</button>
-          </div>
+    <div className="d-flex align-items-center justify-content-center min-vh-100 bg-light">
+      <div className="card p-4 shadow-lg text-center" style={{ width: '20rem' }}>
+        <motion.img 
+          src={images[imageIndex]} 
+          alt="Profile" 
+          className="rounded-circle mb-3 img-fluid"
+          key={imageIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        />
+        <h1 className="mb-3">Age: {age}</h1>
+        <div className="d-flex justify-content-around">
+          <button onClick={() => changeAge(-1)} className="btn btn-primary">-1 year</button>
+          <button onClick={() => changeAge(1)} className="btn btn-danger">+1 Year</button>
         </div>
       </div>
     </div>

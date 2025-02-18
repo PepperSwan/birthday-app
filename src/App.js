@@ -3,24 +3,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { motion } from 'framer-motion';
 
 const images = [
-  '/images/age12.jpg',
-  '/images/age13.jpg',
-  '/images/age14.jpg',
-  '/images/age15.jpg',
-  '/images/age16.jpg',
-  '/images/age17.jpg',
-  '/images/age18.jpg',
-  '/images/age19.jpg',
-  '/images/age20.jpg',
-  '/images/age21.jpg',
-  '/images/age22.jpg',
-  '/images/age23.jpg',
-  '/images/age24.jpg',
-  '/images/age25.jpg',
-  '/images/age26.jpg',
-  '/images/age27.jpg',
-  '/images/age28.jpg',
-  '/images/age29.jpg'
+  '/images/age12.png',
+  '/images/age13.png',
+  '/images/age14.png',
+  '/images/age15.png',
+  '/images/age16.png',
+  '/images/age17.png',
+  '/images/age18.png',
+  '/images/age19.png',
+  '/images/age20.png',
+  '/images/age21.png',
+  '/images/age22.png',
+  '/images/age23.png',
+  '/images/age24.png',
+  '/images/age25.png',
+  '/images/age26.png',
+  '/images/age27.png',
+  '/images/age28.png',
+  '/images/age29.png'
 ];
 
 const AgeCounterApp = () => {

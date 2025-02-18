@@ -23,9 +23,17 @@ const images = [
   '/images/age29.png'
 ];
 
+const clickLabels = [
+  "Oh fuck",
+  "I don't wanna die",
+  "Please don't make me old",
+  "IT HURTS!"
+];
+
 const AgeCounterApp = () => {
   const [age, setAge] = useState(12);
   const [imageIndex, setImageIndex] = useState(0);
+  const [Count28, setCount28] = useState(0);
 
   // Create an audio element for the sound effect
   const audio = new Audio('/sounds/crowd-cheering.mp3');  // Correct path to the sound file
@@ -36,14 +44,30 @@ const AgeCounterApp = () => {
       setAge(newAge);
       setImageIndex(newAge - 12);
     }
-    if (newAge === 29) {
-      audio.play()
+    if (newAge === 29 && Count28 < 3) {
+      setCount28(Count28 + 1);
+      getButtonAnimation()
     }
+    if (newAge === 29 && Count28 === 3) {
+      setAge(newAge);
+      setImageIndex(newAge - 12);
+      setCount28(0);
+      audio.play();
+    }
+  };
+
+  const getButtonLabel = () => {
+    if (age === 28 && Count28 < 4) {
+      return clickLabels[Count28];
+    } else if (age === 29) {
+      return "Age will destroy us all";
+    }
+    return "+1 Year";  // Default label when age is not 28 or after 3 clicks
   };
 
   // Function to animate the button when age is 28
   const getButtonAnimation = () => {
-    if (age === 28) {
+    if (age === 28 && Count28 > 0) {
       return {
         x: Math.random() * 200 - 100,  // Random horizontal movement
         y: Math.random() * 200 - 100,  // Random vertical movement
@@ -76,7 +100,7 @@ const AgeCounterApp = () => {
             style={{ position: 'relative' }} // Ensure the button can move freely
             animate={getButtonAnimation()} // Apply random movement when age = 28
           >
-            +1 Year
+            {getButtonLabel()}
           </motion.button>
         </div>
       </div>

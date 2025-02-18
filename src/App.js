@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { motion } from 'framer-motion';
 
@@ -27,11 +27,29 @@ const AgeCounterApp = () => {
   const [age, setAge] = useState(12);
   const [imageIndex, setImageIndex] = useState(0);
 
+  // Create an audio element for the sound effect
+  const age29Sound = new Audio('/sounds/crowd-cheering.mp3');
+
+  // Function to play the sound when age hits 29
+  const playAge29Sound = () => {
+    if (age === 29) {
+      age29Sound.play();
+    }
+  };
+
+  // Effect hook to play sound when age hits 29
+  useEffect(() => {
+    playAge29Sound();
+  }, [age]);
+
   const changeAge = (delta) => {
     const newAge = age + delta;
     if (newAge >= 12 & newAge <= 29) {
       setAge(newAge);
       setImageIndex(newAge-12);
+    }
+    if (newAge == 29) {
+
     }
   };
 

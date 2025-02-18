@@ -36,8 +36,8 @@ const AgeCounterApp = () => {
           />
           <h1 className="text-xl font-semibold mb-2">Age: {age}</h1>
           <div className="flex space-x-4">
-            <button onClick={() => changeAge(1)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add</button>
-            <button onClick={() => changeAge(-1)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Subtract</button>
+            <button onClick={() => changeAge(1)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+1 Year</button>
+            <button onClick={() => changeAge(-1)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">-1 Year</button>
           </div>
         </div>
       </div>

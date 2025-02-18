@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { motion } from 'framer-motion';
 
@@ -32,11 +32,11 @@ const AgeCounterApp = () => {
 
   const changeAge = (delta) => {
     const newAge = age + delta;
-    if (newAge >= 12 && newAge <= 29) {
+    if (newAge >= 12 && newAge <= 28) {
       setAge(newAge);
       setImageIndex(newAge - 12);
     }
-    if (newAge == 29) {
+    if (newAge === 29) {
       audio.play()
     }
   };

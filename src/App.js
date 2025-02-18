@@ -92,12 +92,28 @@ const AgeCounterApp = () => {
         </div>
         <h2 className="mb-3">Age: {age}</h2>
         <div className="d-flex justify-content-around">
-          <button onClick={() => changeAge(-1)} className="btn btn-primary" disabled={age <= 12}>-1 year</button>
+          <button 
+            onClick={() => changeAge(-1)} 
+            className="btn btn-primary" 
+            disabled={age <= 12}
+            style={{ width: '120px', height: '50px', fontSize: '14px'}} // Fixed width and height
+          >
+            -1 year
+          </button>
           <motion.button 
             onClick={() => changeAge(1)} 
             className="btn btn-danger" 
             disabled={age >= 29} 
-            style={{ position: 'relative' }} // Ensure the button can move freely
+            style={{ 
+              position: 'relative', 
+              width: '120px', 
+              height: '50px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              fontSize: '14px',
+              whiteSpace: 'wrap',
+            }}
             animate={getButtonAnimation()} // Apply random movement when age = 28
           >
             {getButtonLabel()}

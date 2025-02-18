@@ -3,11 +3,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { motion } from 'framer-motion';
 
 const images = [
-  '/images/age1.jpg',
-  '/images/age2.jpg',
-  '/images/age3.jpg',
-  '/images/age4.jpg',
-  '/images/age5.jpg'
+  '/images/age12.jpg',
+  '/images/age13.jpg',
+  '/images/age14.jpg',
+  '/images/age15.jpg',
+  '/images/age16.jpg',
+  '/images/age17.jpg',
+  '/images/age18.jpg',
+  '/images/age19.jpg',
+  '/images/age20.jpg',
+  '/images/age21.jpg',
+  '/images/age22.jpg',
+  '/images/age23.jpg',
+  '/images/age24.jpg',
+  '/images/age25.jpg',
+  '/images/age26.jpg',
+  '/images/age27.jpg',
+  '/images/age28.jpg',
+  '/images/age29.jpg'
 ];
 
 const AgeCounterApp = () => {
@@ -18,7 +31,7 @@ const AgeCounterApp = () => {
     const newAge = age + delta;
     if (newAge >= 12 & newAge <= 29) {
       setAge(newAge);
-      setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setImageIndex(newAge-12);
     }
   };
 

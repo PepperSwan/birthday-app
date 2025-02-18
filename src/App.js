@@ -48,9 +48,6 @@ const AgeCounterApp = () => {
       setAge(newAge);
       setImageIndex(newAge-12);
     }
-    if (newAge == 29) {
-
-    }
   };
 
   return (

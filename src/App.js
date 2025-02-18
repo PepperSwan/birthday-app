@@ -45,7 +45,7 @@ const AgeCounterApp = () => {
           key={imageIndex}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0 }}
         />
         <h1 className="mb-3">Age: {age}</h1>
         <div className="d-flex justify-content-around">

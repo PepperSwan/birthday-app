@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { motion } from 'framer-motion';
 
 const allImages = [
   { src: '/images/age12_1.png', age: 12 },

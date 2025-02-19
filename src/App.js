@@ -59,6 +59,7 @@ const AgeGuessingGame = () => {
   const correctSound = new Audio('/sounds/correct.m4a');
   const closeSound = new Audio('/sounds/close.m4a');
   const incorrectSound = new Audio('/sounds/incorrect.m4a');
+  const [showSecret, setShowSecret] = useState(false);
 
   useEffect(() => {
     setShuffledImages(shuffleArray(allImages).slice(0, 10));
@@ -96,12 +97,15 @@ const AgeGuessingGame = () => {
         setHighScore(score + points);
         localStorage.setItem('highScore', score + points);
       }
+      if (score + points === 20) {
+        setShowSecret(true);
+      }
     }
   };
 
   if (showIntro) {
     return (
-      <div className="text-center">
+      <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
         <h1>Welcome to Guess My Age!</h1>
         <p>Try to guess the correct age. Exact matches earn 2 points, and guesses within 1 year earn 1 point.</p>
         <button className="btn btn-primary" onClick={() => setShowIntro(false)}>Start Game</button>
@@ -109,9 +113,18 @@ const AgeGuessingGame = () => {
     );
   }
 
+  if (showSecret) {
+    return (
+      <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
+        <h1>Well done!</h1>
+        <p>You achieved the highest possible score!</p>
+      </div>
+    );
+  }
+
   if (gameOver) {
     return (
-      <div className="text-center">
+      <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
         <h1>Game Over</h1>
         <p>Your final score: {score}</p>
         <div className="d-flex flex-wrap justify-content-center">

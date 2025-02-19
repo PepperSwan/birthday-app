@@ -61,7 +61,7 @@ const AgeGuessingGame = () => {
   const [showSecret, setShowSecret] = useState(false);
 
   useEffect(() => {
-    setShuffledImages(shuffleArray(allImages).slice(0, 10));
+    setShuffledImages(shuffleArray(allImages).slice(0, 9));
   }, []);
 
   const handleGuess = (event) => {
@@ -96,7 +96,7 @@ const AgeGuessingGame = () => {
         setHighScore(score + points);
         localStorage.setItem('highScore', score + points);
       }
-      if (score + points === 20) {
+      if (score + points === 18) {
         setShowSecret(true);
       }
     }
@@ -106,7 +106,11 @@ const AgeGuessingGame = () => {
     return (
       <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
         <h1>Welcome to Guess My Age!</h1>
-        <p>Try to guess the correct age. Exact matches earn 2 points, and guesses within 1 year earn 1 point.</p>
+        <p></p>
+        Try to guess the correct age I am in each photo you're shown.
+        <p>Exact matches earn <b>2 points</b>, and guesses within 1 year earn <b>1 point</b>.</p>
+        If you achieve a perfect score, I will reveal a secret!
+        <p></p>
         <button className="btn btn-primary" onClick={() => setShowIntro(false)}>Start Game</button>
       </div>
     );
@@ -116,7 +120,13 @@ const AgeGuessingGame = () => {
     return (
       <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
         <h1>Well done!</h1>
-        <p>You achieved the highest possible score!</p>
+        <p>You achieved a perfect score!</p>
+        <p></p>
+        <p>Now I shall reveal to you my secret...<br /><b>The true story of the name "Pepper Swan"!</b></p>
+        Basically I fancied a guy in school who said Pepper was a cool name.
+        <p>The Swan part is lifted directly from Bella Swan, a character in Twilight.</p>
+        <p><i>I have never even seen Twilight.</i></p>
+        <button className="btn btn-secondary" onClick={() => window.location.reload()}>Play Again..?</button>
       </div>
     );
   }

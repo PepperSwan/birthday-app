@@ -107,7 +107,7 @@ const AgeGuessingGame = () => {
       <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
         <h1>Welcome to Guess My Age!</h1>
         <p></p>
-        Try to guess the correct age I am in each photo you're shown.
+        Try to guess how old I am in each photo.
         <p>Exact matches earn <b>2 points</b>, and guesses within 1 year earn <b>1 point</b>.</p>
         If you achieve a perfect score, I will reveal a secret!
         <p></p>
@@ -123,8 +123,8 @@ const AgeGuessingGame = () => {
         <p>You achieved a perfect score!</p>
         <p></p>
         <p>Now I shall reveal to you my secret...<br /><b>The true story of the name "Pepper Swan"!</b></p>
-        Basically I fancied a guy in school who said Pepper was a cool name.
-        <p>The Swan part is lifted directly from Bella Swan, a character in Twilight.</p>
+        Basically, I fancied a guy in school who said Pepper was a cool name, so I made it my nickname.
+        <p>Pepper needed a last name, so I took Swan from Bella Swan... A character in Twilight.</p>
         <p><i>I have never even seen Twilight.</i></p>
         <button className="btn btn-secondary" onClick={() => window.location.reload()}>Play Again..?</button>
       </div>
@@ -154,7 +154,7 @@ const AgeGuessingGame = () => {
     <div className="d-flex flex-column align-items-center justify-content-center min-vh-100">
       <h1>Guess My Age</h1>
       <div className="card p-4 shadow-lg text-center" style={{ width: '20rem' }}>
-        <img src={shuffledImages[currentIndex]?.src} alt="Guess the age" className="img-fluid mb-3" />
+        <img src={shuffledImages[currentIndex]?.src} alt="Guess the age" className="img-fluid mb-3" loading="lazy" />
         <input 
           type="number" 
           className="form-control mb-2 text-center" 

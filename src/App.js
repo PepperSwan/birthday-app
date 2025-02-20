@@ -1,5 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
+import IntroScreen from './IntroScreen';
+import GameScreen from './GameScreen';
+import GameOverScreen from './GameOverScreen';
+import SecretScreen from './SecretScreen';
+
+const correctSound = new Audio('/sounds/correct.m4a');
+const closeSound = new Audio('/sounds/close.m4a');
+const incorrectSound = new Audio('/sounds/incorrect.m4a');
 
 const allImages = [
   { src: '/images/age12_1.png', age: 12 },
@@ -42,130 +49,73 @@ const allImages = [
   { src: '/images/age28_2.png', age: 28 },
 ];
 
-const shuffleArray = (array) => {
-  return [...array].sort(() => Math.random() - 0.5);
-};
-
 const AgeGuessingGame = () => {
-  const [showIntro, setShowIntro] = useState(true);
-  const [shuffledImages, setShuffledImages] = useState([]);
+  const [screen, setScreen] = useState('intro');
+  const [gameImages, setGameImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [userGuess, setUserGuess] = useState('');
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(() => parseInt(localStorage.getItem('highScore')) || 0);
-  const [userGuess, setUserGuess] = useState('');
-  const [gameOver, setGameOver] = useState(false);
   const [results, setResults] = useState([]);
-  const correctSound = new Audio('/sounds/correct.m4a');
-  const closeSound = new Audio('/sounds/close.m4a');
-  const incorrectSound = new Audio('/sounds/incorrect.m4a');
-  const [showSecret, setShowSecret] = useState(false);
 
-  useEffect(() => {
-    setShuffledImages(shuffleArray(allImages).slice(0, 9));
-  }, []);
+  const startGame = () => {
+    const shuffledImages = [...allImages].sort(() => 0.5 - Math.random()).slice(0, 10);
+    setGameImages(shuffledImages);
+    setCurrentIndex(0);
+    setScore(0);
+    setResults([]);
+    setScreen('game');
+  };
 
-  const handleGuess = (event) => {
-    if (event.key && event.key !== 'Enter') return;
-    const actualAge = shuffledImages[currentIndex]?.age;
-    const guessedAge = parseInt(userGuess);
-    if (!actualAge || isNaN(guessedAge)) return;
-    let points = 0;
-    let mark = '❌';
-    
-    if (guessedAge === actualAge) {
-      points = 2;
-      mark = '✅';
-      correctSound.play();
-    } else if (guessedAge === actualAge + 1 || guessedAge === actualAge - 1) {
-      points = 1;
-      mark = '🟠';
-      closeSound.play();
-    } else {
-      incorrectSound.play();
-    }
+  const handleGuess = (e) => {
+    if (e.key === 'Enter') {
+      const correctAge = gameImages[currentIndex].age;
+      let points = 0;
+      let mark = '❌';
 
-    setScore(score + points);
-    setResults([...results, { ...shuffledImages[currentIndex], guess: guessedAge, mark }]);
-    
-    if (currentIndex < shuffledImages.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-      setUserGuess('');
-    } else {
-      setGameOver(true);
-      if (score + points > highScore) {
-        setHighScore(score + points);
-        localStorage.setItem('highScore', score + points);
+      if (parseInt(userGuess) === correctAge) {
+        points = 2;
+        mark = '✅';
+        correctSound.play()
+      } else if (Math.abs(parseInt(userGuess) - correctAge) === 1) {
+        points = 1;
+        mark = '🟠';
+        closeSound.play()
+      } else {
+        incorrectSound.play()
       }
-      if (score + points === 18) {
-        setShowSecret(true);
+
+      setScore(score + points);
+      setResults([...results, { src: gameImages[currentIndex].src, age: correctAge, mark }]);
+      setUserGuess('');
+      
+      if (currentIndex < gameImages.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        if (score + points > highScore) {
+          setHighScore(score + points);
+          localStorage.setItem('highScore', score + points);
+        }
+        setScreen(score + points === 20 ? 'secret' : 'gameover');
       }
     }
   };
 
-  if (showIntro) {
-    return (
-      <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
-        <h1>Welcome to Guess My Age!</h1>
-        <p></p>
-        Try to guess how old I am in each photo.
-        <p>Exact matches earn <b>2 points</b>, and guesses within 1 year earn <b>1 point</b>.</p>
-        If you achieve a perfect score, I will reveal a secret!
-        <p></p>
-        <button className="btn btn-primary" onClick={() => setShowIntro(false)}>Start Game</button>
-      </div>
-    );
-  }
-
-  if (showSecret) {
-    return (
-      <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
-        <h1>Well done!</h1>
-        <p>You achieved a perfect score!</p>
-        <p></p>
-        <p>Now I shall reveal to you my secret...<br /><b>The true story of the name "Pepper Swan"!</b></p>
-        Basically, I fancied a guy in school who said Pepper was a cool name, so I made it my nickname.
-        <p>Pepper needed a last name, so I took Swan from Bella Swan... A character in Twilight.</p>
-        <p><i>I have never even seen Twilight.</i></p>
-        <button className="btn btn-secondary" onClick={() => window.location.reload()}>Play Again..?</button>
-      </div>
-    );
-  }
-
-  if (gameOver) {
-    return (
-      <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
-        <h1>Game Over</h1>
-        <p>Your final score: {score}</p>
-        <div className="d-flex flex-wrap justify-content-center">
-          {results.map((result, index) => (
-            <div key={index} className="m-2 text-center">
-              <img src={result.src} alt="result" className="img-fluid" style={{ width: '100px', height: '100px' }} />
-              <p>{result.age} {result.mark}</p>
-              <p>Your Guess: {result.guess}</p>
-            </div>
-          ))}
-        </div>
-        <button className="btn btn-secondary" onClick={() => window.location.reload()}>Play Again</button>
-      </div>
-    );
-  }
-
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center min-vh-100">
-      <h1>Guess My Age</h1>
-      <div className="card p-4 shadow-lg text-center" style={{ width: '20rem' }}>
-        <img src={shuffledImages[currentIndex]?.src} alt="Guess the age" className="img-fluid mb-3" loading="lazy" />
-        <input 
-          type="number" 
-          className="form-control mb-2 text-center" 
-          value={userGuess} 
-          onChange={(e) => setUserGuess(e.target.value)}
-          onKeyDown={handleGuess}
+    <div>
+      {screen === 'intro' && <IntroScreen onStart={startGame} />}
+      {screen === 'game' && (
+        <GameScreen 
+          image={gameImages[currentIndex]?.src} 
+          userGuess={userGuess} 
+          setUserGuess={setUserGuess} 
+          handleGuess={handleGuess} 
+          score={score} 
+          highScore={highScore} 
         />
-        <button className="btn btn-success mb-3" onClick={handleGuess}>Submit</button>
-        <h3>Score: {score}</h3>
-        <h5 className="text-muted">High Score: {highScore}</h5>
-      </div>
+      )}
+      {screen === 'gameover' && <GameOverScreen score={score} results={results} onRestart={startGame} />}
+      {screen === 'secret' && <SecretScreen />}
     </div>
   );
 };

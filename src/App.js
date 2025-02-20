@@ -3,6 +3,7 @@ import IntroScreen from './IntroScreen';
 import GameScreen from './GameScreen';
 import GameOverScreen from './GameOverScreen';
 import SecretScreen from './SecretScreen';
+<img src={'/images/introbanner2.png'} alt="intro banner" className="img-fluid mb-3" style={{ maxHeight: '150px' }} />
 
 const correctSound = new Audio('/sounds/correct.m4a');
 const closeSound = new Audio('/sounds/close.m4a');
@@ -157,7 +158,14 @@ const AgeGuessingGame = () => {
           onRestart={startGame}
         />
       )}
-      {screen === 'secret' && <SecretScreen />}
+      {screen === 'secret' && (
+        <SecretScreen
+          allImages={allImages}
+          score={score}
+          results={results}
+          userName={userName}
+        />
+      )}
     </div>
   );
 };

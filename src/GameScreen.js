@@ -12,6 +12,13 @@ const GameScreen = ({ image, userGuess, setUserGuess, handleGuess, score, highSc
   }, [fadeEffect]);
 
   return (
+    <div
+      className="d-flex flex-column align-items-center justify-content-center min-vh-100"
+      style={{
+        background: 'linear-gradient(135deg, #f8cdda, #1c92d2)',
+        animation: 'gradientShift 10s ease infinite'
+      }}
+    >
     <div className="d-flex flex-column align-items-center justify-content-center min-vh-100 text-center">
       <h1 className="mb-4">Guess My Age</h1>
       <div className="card p-4 shadow-lg text-center position-relative" style={{ width: '20rem' }}>
@@ -47,6 +54,7 @@ const GameScreen = ({ image, userGuess, setUserGuess, handleGuess, score, highSc
         <p>Score: {score}</p>
         <p style={{ fontSize: '14px' }}>High Score: {highScore}</p>
       </div>
+    </div>
     </div>
   );
 };

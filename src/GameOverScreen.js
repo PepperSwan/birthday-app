@@ -14,6 +14,13 @@ const GameOverScreen = ({ score, results, onRestart, userName }) => {
       }, [userName, score, results]);
 
   return (
+    <div
+      className="d-flex flex-column align-items-center justify-content-center min-vh-100"
+      style={{
+        background: 'linear-gradient(135deg, #f8cdda, #1c92d2)',
+        animation: 'gradientShift 10s ease infinite'
+      }}
+    >
     <div className="d-flex flex-column align-items-center justify-content-center min-vh-100 text-center">
       <h1 className="mb-4">Game Over, {userName}.</h1>
       <p className="mb-3">Your final score: {score}</p>
@@ -29,6 +36,7 @@ const GameOverScreen = ({ score, results, onRestart, userName }) => {
         ))}
       </div>
       <button className="btn btn-primary mt-4" onClick={onRestart}>Play Again</button>
+    </div>
     </div>
   );
 };

@@ -9,15 +9,14 @@ const IntroScreen = ({ onStart, userName, setUserName }) => {
         <p>Exact matches earn <b>2 points</b>, and guesses within 1 year earn <b>1 point</b>.</p>
         If you achieve a perfect score, I will reveal a secret!
         <p></p>
-        <button className="btn btn-primary" onClick={onStart}>Start Game</button>
+        {/*        <button className="btn btn-primary" onClick={onStart}>Start Game</button> */}
         <p></p>
-        <p>Enter your name if you would like to be included in the leaderboard:</p>
         <input 
             type="text" 
             className="form-control mb-2 text-center w-25" 
             value={userName} 
             onChange={(e) => setUserName(e.target.value)}
-            placeholder="Enter your name"
+            placeholder="Enter your name to start..."
             onKeyDown={(e) => {
                 if (e.key === 'Enter' && userName.trim() !== '') {
                 onStart();

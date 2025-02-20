@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const GameScreen = ({ image, userGuess, setUserGuess, handleGuess, score, highScore, feedback, fadeEffect }) => {
+  const inputRef = useRef(null);
+
+  // When fadeEffect turns false (input re-enabled), focus the input.
+  useEffect(() => {
+    if (!fadeEffect && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [fadeEffect]);
+
   return (
     <div className="d-flex flex-column align-items-center justify-content-center min-vh-100 text-center">
       <h1 className="mb-4">Guess My Age</h1>
@@ -31,8 +40,9 @@ const GameScreen = ({ image, userGuess, setUserGuess, handleGuess, score, highSc
           value={userGuess} 
           onChange={(e) => setUserGuess(e.target.value)} 
           onKeyDown={handleGuess} 
-          placeholder="Enter age"
-          disabled={fadeEffect}
+          placeholder="Enter age" 
+          disabled={fadeEffect} 
+          ref={inputRef}  // Attach the ref here
         />
         <p>Score: {score}</p>
         <p style={{ fontSize: '14px' }}>High Score: {highScore}</p>

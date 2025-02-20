@@ -19,7 +19,7 @@ const GameScreen = ({ image, userGuess, setUserGuess, handleGuess, score, highSc
               animate={{ scale: 1 }} 
               transition={{ duration: 0.3 }}
               className="position-absolute top-50 start-50 translate-middle"
-              style={{ fontSize: '3rem', fontWeight: 'bold' }}
+              style={{ fontSize: '4rem', fontWeight: 'bold' }}
             >
               {feedback}
             </motion.div>

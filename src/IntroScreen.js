@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IntroScreen = ({ onStart }) => {
+const IntroScreen = ({ onStart, userName, setUserName }) => {
   return (
     <div className="text-center d-flex flex-column align-items-center justify-content-center min-vh-100">
         <h1>Welcome to Guess My Age!</h1>
@@ -10,6 +10,20 @@ const IntroScreen = ({ onStart }) => {
         If you achieve a perfect score, I will reveal a secret!
         <p></p>
         <button className="btn btn-primary" onClick={onStart}>Start Game</button>
+        <p></p>
+        <p>Enter your name if you would like to be included in the leaderboard:</p>
+        <input 
+            type="text" 
+            className="form-control mb-2 text-center w-25" 
+            value={userName} 
+            onChange={(e) => setUserName(e.target.value)}
+            placeholder="Enter your name"
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' && userName.trim() !== '') {
+                onStart();
+                }
+            }}
+        />
       </div>
   );
 };

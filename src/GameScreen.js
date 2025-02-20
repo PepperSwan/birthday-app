@@ -31,7 +31,8 @@ const GameScreen = ({ image, userGuess, setUserGuess, handleGuess, score, highSc
           value={userGuess} 
           onChange={(e) => setUserGuess(e.target.value)} 
           onKeyDown={handleGuess} 
-          placeholder="Enter age" 
+          placeholder="Enter age"
+          disabled={fadeEffect}
         />
         <p>Score: {score}</p>
         <p style={{ fontSize: '14px' }}>High Score: {highScore}</p>

@@ -10,58 +10,58 @@ const closeSound = new Audio('/sounds/close.m4a');
 const incorrectSound = new Audio('/sounds/incorrect.m4a');
 
 const allImages = [
-  { src: '/images/age7_1.png', age: 7, id: 1},
-  { src: '/images/age8_1.png', age: 8, id: 2},
-  { src: '/images/age9_1.png', age: 9, id: 3},
-  { src: '/images/age10_1.png', age: 10, id: 4},
-  { src: '/images/age12_1.png', age: 12, id: 5},
-  { src: '/images/age12_2.png', age: 12, id: 6 },
-  { src: '/images/age13_1.png', age: 13, id: 7 },
-  { src: '/images/age13_2.png', age: 13, id: 8 },
-  { src: '/images/age13_3.png', age: 13, id: 9 },
-  { src: '/images/age14_1.png', age: 14, id: 10 },
-  { src: '/images/age14_2.png', age: 14, id: 11 },
-  { src: '/images/age15_1.png', age: 15, id: 12 },
-  { src: '/images/age15_2.png', age: 15, id: 13 },
-  { src: '/images/age15_3.png', age: 15, id: 14 },
-  { src: '/images/age16_1.png', age: 16, id: 15 },
-  { src: '/images/age16_2.png', age: 16, id: 16 },
-  { src: '/images/age16_3.png', age: 16, id: 17 },
-  { src: '/images/age17_1.png', age: 17, id: 18 },
-  { src: '/images/age17_2.png', age: 17, id: 19 },
-  { src: '/images/age17_3.png', age: 17, id: 20 },
-  { src: '/images/age18_1.png', age: 18, id: 21 },
-  { src: '/images/age18_2.png', age: 18, id: 22 },
-  { src: '/images/age18_3.png', age: 18, id: 23 },
-  { src: '/images/age19_1.png', age: 19, id: 24 },
-  { src: '/images/age19_2.png', age: 19, id: 25 },
-  { src: '/images/age19_3.png', age: 19, id: 26 },
-  { src: '/images/age20_1.png', age: 20, id: 27 },
-  { src: '/images/age20_2.png', age: 20, id: 28 },
-  { src: '/images/age20_3.png', age: 20, id: 29 },
-  { src: '/images/age21_1.png', age: 21, id: 30 },
-  { src: '/images/age21_2.png', age: 21, id: 31 },
-  { src: '/images/age22_1.png', age: 22, id: 32 },
-  { src: '/images/age22_2.png', age: 22, id: 33 },
-  { src: '/images/age22_3.png', age: 22, id: 34 },
-  { src: '/images/age23_1.png', age: 23, id: 35 },
-  { src: '/images/age23_2.png', age: 23, id: 36 },
-  { src: '/images/age23_3.png', age: 23, id: 37 },
-  { src: '/images/age24_1.png', age: 24, id: 38 },
-  { src: '/images/age24_2.png', age: 24, id: 39 },
-  { src: '/images/age24_3.png', age: 24, id: 40 },
-  { src: '/images/age25_1.png', age: 25, id: 41 },
-  { src: '/images/age25_2.png', age: 25, id: 42 },
-  { src: '/images/age25_3.png', age: 25, id: 43 },
-  { src: '/images/age26_1.png', age: 26, id: 44 },
-  { src: '/images/age26_2.png', age: 26, id: 45 },
-  { src: '/images/age26_3.png', age: 26, id: 46 },
-  { src: '/images/age27_1.png', age: 27, id: 47 },
-  { src: '/images/age27_2.png', age: 27, id: 48 },
-  { src: '/images/age27_3.png', age: 27, id: 49 },
-  { src: '/images/age28_1.png', age: 28, id: 50 },
-  { src: '/images/age28_2.png', age: 28, id: 51 },
-  { src: '/images/age28_3.png', age: 28, id: 52 },
+  { src: '/images/age1.png', age: 7, id: 1 },
+  { src: '/images/age2.png', age: 8, id: 2 },
+  { src: '/images/age3.png', age: 9, id: 3 },
+  { src: '/images/age4.png', age: 10, id: 4 },
+  { src: '/images/age5.png', age: 12, id: 5 },
+  { src: '/images/age6.png', age: 12, id: 6 },
+  { src: '/images/age7.png', age: 13, id: 7 },
+  { src: '/images/age8.png', age: 13, id: 8 },  // was "/images/age13_2.png"
+  { src: '/images/age9.png', age: 13, id: 9 },  // was "/images/age13_3.png"
+  { src: '/images/age10.png', age: 14, id: 10 }, // was "/images/age14_1.png"
+  { src: '/images/age11.png', age: 14, id: 11 }, // was "/images/age14_2.png"
+  { src: '/images/age12.png', age: 15, id: 12 }, // was "/images/age15_1.png"
+  { src: '/images/age13.png', age: 15, id: 13 }, // was "/images/age15_2.png"
+  { src: '/images/age14.png', age: 15, id: 14 }, // was "/images/age15_3.png"
+  { src: '/images/age15.png', age: 16, id: 15 }, // was "/images/age16_1.png"
+  { src: '/images/age16.png', age: 16, id: 16 }, // was "/images/age16_2.png"
+  { src: '/images/age17.png', age: 16, id: 17 }, // was "/images/age16_3.png"
+  { src: '/images/age18.png', age: 17, id: 18 }, // was "/images/age17_1.png"
+  { src: '/images/age19.png', age: 17, id: 19 }, // was "/images/age17_2.png"
+  { src: '/images/age20.png', age: 17, id: 20 }, // was "/images/age17_3.png"
+  { src: '/images/age21.png', age: 18, id: 21 }, // was "/images/age18_1.png"
+  { src: '/images/age22.png', age: 18, id: 22 }, // was "/images/age18_2.png"
+  { src: '/images/age23.png', age: 18, id: 23 }, // was "/images/age18_3.png"
+  { src: '/images/age24.png', age: 19, id: 24 }, // was "/images/age19_1.png"
+  { src: '/images/age25.png', age: 19, id: 25 }, // was "/images/age19_2.png"
+  { src: '/images/age26.png', age: 19, id: 26 }, // was "/images/age19_3.png"
+  { src: '/images/age27.png', age: 20, id: 27 }, // was "/images/age20_1.png"
+  { src: '/images/age28.png', age: 20, id: 28 }, // was "/images/age20_2.png"
+  { src: '/images/age29.png', age: 20, id: 29 }, // was "/images/age20_3.png"
+  { src: '/images/age30.png', age: 21, id: 30 }, // was "/images/age21_1.png"
+  { src: '/images/age31.png', age: 21, id: 31 }, // was "/images/age21_2.png"
+  { src: '/images/age32.png', age: 22, id: 32 }, // was "/images/age22_1.png"
+  { src: '/images/age33.png', age: 22, id: 33 }, // was "/images/age22_2.png"
+  { src: '/images/age34.png', age: 22, id: 34 }, // was "/images/age22_3.png"
+  { src: '/images/age35.png', age: 23, id: 35 }, // was "/images/age23_1.png"
+  { src: '/images/age36.png', age: 23, id: 36 }, // was "/images/age23_2.png"
+  { src: '/images/age37.png', age: 23, id: 37 }, // was "/images/age23_3.png"
+  { src: '/images/age38.png', age: 24, id: 38 }, // was "/images/age24_1.png"
+  { src: '/images/age39.png', age: 24, id: 39 }, // was "/images/age24_2.png"
+  { src: '/images/age40.png', age: 24, id: 40 }, // was "/images/age24_3.png"
+  { src: '/images/age41.png', age: 25, id: 41 }, // was "/images/age25_1.png"
+  { src: '/images/age42.png', age: 25, id: 42 }, // was "/images/age25_2.png"
+  { src: '/images/age43.png', age: 25, id: 43 }, // was "/images/age25_3.png"
+  { src: '/images/age44.png', age: 26, id: 44 }, // was "/images/age26_1.png"
+  { src: '/images/age45.png', age: 26, id: 45 }, // was "/images/age26_2.png"
+  { src: '/images/age46.png', age: 26, id: 46 }, // was "/images/age26_3.png"
+  { src: '/images/age47.png', age: 27, id: 47 },
+  { src: '/images/age48.png', age: 27, id: 48 },
+  { src: '/images/age49.png', age: 27, id: 49 }, 
+  { src: '/images/age50.png', age: 28, id: 50 },
+  { src: '/images/age51.png', age: 28, id: 51 },
+  { src: '/images/age52.png', age: 28, id: 52 } 
 ];
 
 const AgeGuessingGame = () => {
